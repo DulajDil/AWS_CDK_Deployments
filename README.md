@@ -1,14 +1,113 @@
-# Welcome to your CDK TypeScript project
+# Hello CDK
 
-This is a blank project for CDK development with TypeScript.
+A simple AWS CDK application demonstrating a serverless API using Lambda and API Gateway.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## Architecture
 
-## Useful commands
+- **AWS Lambda** - Node.js 20.x function written in TypeScript
+- **API Gateway** - REST API with CORS enabled
+- **Infrastructure as Code** - Defined using AWS CDK
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+## Prerequisites
+
+- Node.js 20.x or later
+- AWS CLI configured with credentials
+- AWS CDK CLI (`npm install -g aws-cdk`)
+
+## Project Structure
+
+```
+hello-cdk/
+├── lambda/              # Lambda function code (TypeScript)
+├── lib/                 # CDK infrastructure code
+├── bin/                 # CDK app entry point
+├── test/                # Unit tests
+└── cdk.out/             # Generated CloudFormation templates
+```
+
+## Installation
+
+```bash
+npm install
+```
+
+## Configuration
+
+Set your AWS profile before deploying:
+
+```bash
+export AWS_PROFILE=your-profile-name
+```
+
+The stack uses the default region from your AWS configuration.
+
+## Deployment
+
+Build and deploy the stack:
+
+```bash
+npm run build
+cdk bootstrap  # Only needed once per account/region
+cdk deploy
+```
+
+## Testing
+
+Run the test suite:
+
+```bash
+npm test
+```
+
+Update test snapshots:
+
+```bash
+npm test -- -u
+```
+
+## Usage
+
+After deployment, the API URL will be displayed in the output. Test it with:
+
+```bash
+curl https://your-api-id.execute-api.region.amazonaws.com/prod/
+```
+
+Expected response:
+
+```json
+{
+  "message": "Hello, world Dulaj",
+  "timestamp": "2026-02-05T11:25:35.489Z",
+  "path": "/"
+}
+```
+
+## Local Development
+
+The Lambda function code is in `lambda/index.ts`. After making changes:
+
+```bash
+npm run build
+cdk deploy
+```
+
+## Cleanup
+
+Remove all deployed resources:
+
+```bash
+cdk destroy
+```
+
+## Tech Stack
+
+- AWS CDK v2
+- TypeScript
+- Node.js 20.x
+- esbuild (for Lambda bundling)
+- Jest (for testing)
+
+## License
+
+MIT
