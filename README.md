@@ -77,7 +77,7 @@ Expected response:
 
 ```json
 {
-  "message": "Hello, world Dulaj",
+  "message": "Hello, world",
   "timestamp": "2026-02-05T11:25:35.489Z",
   "path": "/"
 }
