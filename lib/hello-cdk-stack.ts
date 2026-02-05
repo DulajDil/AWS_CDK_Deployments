@@ -26,6 +26,9 @@ export class HelloCdkStack extends cdk.Stack {
       handler: helloLambda,
       proxy: true,
       description: 'Hello World API',
+      deployOptions: {
+        stageName: 'dev',
+      },
       defaultCorsPreflightOptions: {
         allowOrigins: apigateway.Cors.ALL_ORIGINS,
         allowMethods: apigateway.Cors.ALL_METHODS
